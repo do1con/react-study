@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from './button1';
+import Button from './button2';
 import Box from './box1';
 
 
