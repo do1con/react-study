@@ -1,36 +1,34 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/prop-types */
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Link } from 'react-router-dom';
-import Rooms from './Rooms';
 
-function Home({ match }) {
-  return <h2>홈</h2>;
-}
+const UserContext = React.createContext('unknown');
 
-function Photo({ match }) {
-  return <h2>사진</h2>;
-}
+export default class App extends Component {
 
-// eslint-disable-next-line react/prefer-stateless-function
-class App extends Component {
   render() {
     return (
-      <BrowserRouter>
-        <div style={{ padding: 20, border: '5px solid gray' }}>
-          <Link to="/">홈</Link>
-          <br />
-          <Link to="/Photo">사진</Link>
-          <br />
-          <Link to="/Rooms">방 소개</Link>
-          <br />
-          <Route exact path="/" component={Home} />
-          <Route path="/Photo" component={Photo} />
-          <Route path="/Rooms" component={Rooms} />
-        </div>
-      </BrowserRouter>
+      <div>
+        <UserContext.Provider value="mike">
+          <div>상단</div>
+          <Profile />
+          <div>하단</div>
+        </UserContext.Provider>
+      </div>
     );
   }
 }
 
-export default App;
+function Profile(){
+  return (
+    <div>
+      <Greeting />
+    </div>
+  );
+}
+
+function Greeting(){
+  return (
+    <UserContext.Consumer>
+      {username => <p>{`${username}님 안녕하세요`}</p>}
+    </UserContext.Consumer>
+  );
+}
