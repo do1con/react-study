@@ -11,6 +11,9 @@ export default class App extends Component {
           <div>상단</div>
           <Profile />
           <div>하단</div>
+          <div>상단</div>
+          <Profile />
+          <div>하단</div>
         </UserContext.Provider>
       </div>
     );
