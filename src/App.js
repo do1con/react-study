@@ -4,6 +4,27 @@ const UserContext = React.createContext('unknown');
 
 export default class App extends Component {
 
+  state = [
+    {
+      title: 'hi',
+      pri: 'low'
+    },
+    {
+      title: 'hello',
+      pri: 'high'
+    }
+  ];
+
+  componentDidMount (){
+    const { prevState } = this.state;
+    const copy = this.state;
+    console.log(this.state);
+    console.log(copy);
+    copy.push({ title: 'bye', pri: 'middle' });
+    this.setState({ copy });
+    console.log( prevState === this.state );
+  }
+
   render() {
     return (
       <div>
