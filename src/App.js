@@ -1,27 +1,15 @@
-import React, { useState, useEffect, createContext, useContext } from 'react';
-import { useWindowWidth } from './customHook';
-import ParentComponent from './contextHook';
+import React, { useRef } from 'react';
 
-const C_LoginContext = createContext('not logined');
 
 const App = () => {
-  const login = useContext(C_LoginContext);
-  const width = useWindowWidth();
-  const {name, setName} = useState('');
-  useEffect(() => {
-    console.log('re render');
-  });
+  const boxRef = useRef(null);
+  const onClick = () => {
+    boxRef.current.style.width =  200 + "px";
+    console.log(boxRef.current.width);
+  };
   return (
     <div>
-      <p>{`name is ${name}`}</p>
-      {`width = ${width}`}
-      <input type="text" value={name} />
-      <br/>
-      and you are `{login}`
-      <br/>
-      <input type="button" value="login"/>
-
-      <ParentComponent />
+      <div className="box" style={{width: "500px", height: "500px", backgroundColor: "red", transition: "all 0.5s"}} ref={boxRef} onClick={onClick}></div>
     </div>
   );
 }
