@@ -1,22 +1,20 @@
-import React, { Component } from 'react';
-import ReactDOMServer from 'react-dom/server';
-import Profile from './useHook';
-//import useWindowWidth from './useWindowWidth';
+import React, { useState,useEffect } from 'react';
+import { useWindowWidth } from './customHook';
 
-const getValue = (values) => values;
-
-export default class App extends Component {
-  
-  render() {
-    const theHtml = ReactDOMServer.renderToStaticMarkup(<Profile />);
-    console.log(theHtml);
-//    const theHtml2 = reactDOM.render(<Profile />);
-//    console.log(theHtml2);
-    return (
-      <div>
-        <Profile getValue={getValue}/>
-        <br />
-      </div>
-    );
-  }
+export default function App () {
+  const width = useWindowWidth();
+  const {name, setName} = useState('');
+  /*window.addEventListener('resize', function(){
+    this.console.log(width);
+  }) */
+  useEffect(() => {
+    console.log('re render');
+  });
+  return (
+    <div>
+      <p>{`name is ${name}`}</p>
+      {`width = ${width}`}
+      <input type="text" value={name} onChange={e => setName(e.target.value)}/>
+    </div>
+  );
 }
