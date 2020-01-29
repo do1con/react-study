@@ -1,17 +1,23 @@
-import React, { useRef } from 'react';
+import React, { useMemo } from 'react';
+import { User } from './Ver1';
+import { User2 } from './Ver2';
 
 
 const App = () => {
-  const boxRef = useRef(null);
-  const onClick = () => {
-    boxRef.current.style.width =  200 + "px";
-    console.log(boxRef.current.width);
-  };
+
+  const value = useMemo(() => {
+
+  });
+
   return (
     <div>
-      <div className="box" style={{width: "500px", height: "500px", backgroundColor: "red", transition: "all 0.5s"}} ref={boxRef} onClick={onClick}></div>
+      <h3>ver 1 ( useEffect, useState 만으로 만든 것 )</h3>
+      <User />
+      <h3>ver 2 ( useMemo를 활용한 것 )</h3>
+      <User2 />
     </div>
   );
+
 }
 
 export default App;
