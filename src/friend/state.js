@@ -1,4 +1,4 @@
-import createReducer from './common/createReducer';
+import createReducer from '../common/createReducer';
 
 const ADD = "friend/ADD";
 const REMOVE = "friend/REMOVE";
