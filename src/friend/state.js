@@ -8,12 +8,12 @@ export const addFriend = friend => ({ type: ADD, friend });
 export const removeFriend = friend => ({ type: REMOVE, friend });
 export const editFriend = friend => ({ type: EDIT, friend });
 
-const INITIAL_STATE = { friend: [] };
+const INITIAL_STATE = { friends: [] };
 
 const reducer = createReducer(INITIAL_STATE, {
   [ADD]: (state, action) => state.friends.push(action.friend),
   [REMOVE]: (state, action) => {
-    state.friend = state.friends.filter(
+    state.friends = state.friends.filter(
       friend => friend.id !== action.friend.id
     )
   },
@@ -22,7 +22,7 @@ const reducer = createReducer(INITIAL_STATE, {
       friend => friend.id === action.friend.id
     );
     if(index >= 0) {
-      state.friend[index] = action.friend;
+      state.friends[index] = action.friend;
     }
   }
 });

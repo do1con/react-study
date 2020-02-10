@@ -19,7 +19,7 @@ const reducer = createReducer(INITIAL_STATE, {
     )
   },
   [EDIT]: (state, action) => {
-    const index = state.timelines = state.timelines.findIndex(
+    const index = state.timelines.findIndex(
       timeline => timeline.id === action.timeline.id
     );
     if(index >= 0){
