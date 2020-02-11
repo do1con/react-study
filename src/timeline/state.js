@@ -10,9 +10,9 @@ export const removeTimeline = remove;
 export const editTimeline = edit;
 export const increaseNextPage = () => ({ type: INCREASE_NEXT_PAGE });
 
-const INITIAL_STATE = { nextPage = 0 };
+const INITIAL_STATE = { nextPage: 0 };
 const reducer = createReducer(INITIAL_STATE, {
   [INCREASE_NEXT_PAGE]: (state, action) => (state.nextPage += 1)
 });
 const reducers = [reducer, timelinesReducer];
-export default mergeReducers(reducer);
+export default mergeReducers(reducers);

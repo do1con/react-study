@@ -14,11 +14,11 @@ export default function createItemsLogic(name) {
     {
       [ADD]: (state, action) => state[name].push(action.item),
       [REMOVE]: (state, action) => {
-        state[name].findIndex(item => item.id === action.item.id);
+        const index = state[name].findIndex(item => item.id === action.item.id);
         state[name].splice(index, 1);
       },
       [EDIT]: (state, action) => {
-        state[name].findIndex(item => item.id === action.item.id);
+        const index = state[name].findIndex(item => item.id === action.item.id);
         if (index >= 0) state[name][index] = action.item;
       }
     }
