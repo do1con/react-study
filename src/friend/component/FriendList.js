@@ -1,12 +1,12 @@
 import React from 'react';
 
-const FriendList = ({ friends }) => {
-  console.log(friends)
+function FriendList({ friends }) {
   return (
     <ul>
-      <li key={friends.age}>{friends.name}</li>
+      {friends.map(friend => (
+        <li key={friend.id}>{friend.name}</li>
+      ))}
     </ul>
   );
 }
-
 export default FriendList;

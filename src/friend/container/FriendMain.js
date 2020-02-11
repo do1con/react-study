@@ -1,49 +1,60 @@
-import React, { useEffect, useForceUpdate, useState } from 'react';
+import React from 'react';
 import store from '../../common/store';
 import { getNextFriend } from '../../common/mockData';
 import { addFriend } from '../state';
 import FriendList from '../component/FriendList';
 
-const FriendMain = ( props ) => {
-  const [refresh, forceUpdate] = useState(true);
-  let unsubscribe;
-  //componentDidMount
-  useEffect(() => {
-    unsubscribe = store.subscribe(() => forceUpdate());
-    onAdd();
-  }, []);
-  
-  //componentWillUnmount
-  useEffect(() => () => {
-   // unsubscribe();
-  })
-  let friend = getNextFriend();
-  const onAdd = () => {
-    friend = getNextFriend();
+// 리팩터링 후
+class FriendMain extends React.PureComponent {
+  state = {
+    friends: store.getState().friend.friends,
+  };
+  componentDidMount() {
+    this.unsubscribe = store.subscribe(() =>
+      this.setState({ friends: store.getState().friend.friends }),
+    );
+  }
+  componentWillUnmount() {
+    this.unsubscribe();
+  }
+  onAdd = () => {
+    const friend = getNextFriend();
     store.dispatch(addFriend(friend));
-    console.log('친구추가')
-    forceUpdate(!refresh);
+  };
+  render() {
+    console.log('FriendMain render');
+    const friends = store.getState().friend.friends;
+    return (
+      <div>
+        <button onClick={this.onAdd}>친구 추가</button>
+        <FriendList friends={friends} />
+      </div>
+    );
   }
-
-  let friends;
-  useEffect(() => {
-    friends = store.getState().friend.friends;
-    console.log(friends)
-    console.log('rerender')
-  });
-
-  const forDebug = () => {
-    console.log(store.getState().friend)
-  }
-
-  return (
-    <div>
-      <button onClick={onAdd}>친구 추가</button>
-      <button onClick={forDebug}>버그추가</button>
-      <button onClick={forceUpdate}>렌더</button>
-      <FriendList friends={friend} />
-    </div>
-  );
 }
+
+// 리팩터링 전
+// class FriendMain extends React.Component {
+//   componentDidMount() {
+//     this.unsubscribe = store.subscribe(() => this.forceUpdate());
+//   }
+//   componentWillUnmount() {
+//     this.unsubscribe();
+//   }
+//   onAdd = () => {
+//     const friend = getNextFriend();
+//     store.dispatch(addFriend(friend));
+//   };
+//   render() {
+//     console.log('FriendMain render');
+//     const friends = store.getState().friend.friends;
+//     return (
+//       <div>
+//         <button onClick={this.onAdd}>친구 추가</button>
+//         <FriendList friends={friends} />
+//       </div>
+//     );
+//   }
+// }
 
 export default FriendMain;

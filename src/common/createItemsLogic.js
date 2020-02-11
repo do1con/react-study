@@ -4,7 +4,7 @@ export default function createItemsLogic(name) {
   const ADD = `${name}/ADD`;
   const REMOVE = `${name}/REMOVE`;
   const EDIT = `${name}/EDIT`;
-  
+
   const add = item => ({ type: ADD, item });
   const remove = item => ({ type: REMOVE, item });
   const edit = item => ({ type: EDIT, item });
@@ -19,9 +19,11 @@ export default function createItemsLogic(name) {
       },
       [EDIT]: (state, action) => {
         const index = state[name].findIndex(item => item.id === action.item.id);
-        if (index >= 0) state[name][index] = action.item;
-      }
-    }
+        if (index >= 0) {
+          state[name][index] = action.item;
+        }
+      },
+    },
   );
 
   return { add, remove, edit, reducer };

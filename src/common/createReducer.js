@@ -4,9 +4,9 @@ export default function createReducer(initialState, handlerMap) {
   return function(state = initialState, action) {
     return produce(state, draft => {
       const handler = handlerMap[action.type];
-      if(handler){
+      if (handler) {
         handler(draft, action);
       }
     });
-  }
+  };
 }

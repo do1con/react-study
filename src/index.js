@@ -8,5 +8,5 @@ ReactDOM.render(
     <FriendMain />
     <TimelineMain />
   </div>,
-  document.getElementById("root"),
-)
+  document.getElementById('root'),
+);

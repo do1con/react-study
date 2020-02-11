@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 function TimelineList({ timelines }) {
   return (
@@ -9,5 +9,4 @@ function TimelineList({ timelines }) {
     </ul>
   );
 }
-
 export default TimelineList;
