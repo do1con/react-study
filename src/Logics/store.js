@@ -11,13 +11,13 @@ const TODO = 'TODO/';
 const COUNTER = 'COUNTER/';
 
 // action
-export const ADD_TODO = `${TODO}ADD_TODO`;
-export const REMOVE_TODO = `${TODO}REMOVE_TODO`;
-export const INCREASE_COUNT = `${COUNTER}INCREASE_COUNT`;
-export const DECREASE_COUNT = `${COUNTER}DECREASE_COUNT`;
+const ADD_TODO = `${TODO}ADD_TODO`;
+const REMOVE_TODO = `${TODO}REMOVE_TODO`;
+const INCREASE_COUNT = `${COUNTER}INCREASE_COUNT`;
+const DECREASE_COUNT = `${COUNTER}DECREASE_COUNT`;
 
 // action creators
-export const addTodo = text => ({
+export const AddTodo = text => ({
   type: ADD_TODO,
   desc: text
 });
@@ -55,16 +55,18 @@ const Reducer = (state = initialState, action) => {
     case INCREASE_COUNT:
       return{
         ...state,
-        count: count + 1
+        count: state.count + 1
       }
     case DECREASE_COUNT:
       return{
         ...state,
-        count: count - 1
+        count: state.count - 1
       }
   }
 }
 
-const store = createStore(Reducer);
+const Store = createStore(Reducer);
 
-export default store;
+//tore.dispatch(increaseCount());
+
+export default Store;

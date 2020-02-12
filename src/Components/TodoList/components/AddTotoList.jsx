@@ -1,16 +1,18 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
-import store, { addTodo } from './../../../logics/store';
+import Store, { addTodo } from '../../../Logics/Store';
 
-const AddTodoList = () => {
+const AddTodoList = ( addTodo, state ) => {
 
   const todoInput = useRef();
-  let state = store.getState();
 
   const addTotoInList = () => {
-    store.dispatch(addTodo(todoInput.current.value));
-    console.log(state);
+    addTodo.state.dispatchAddToto(todoInput.current.value)
   };
+
+  useEffect(()=> {
+    console.log('last rerender')
+  })
 
   return (
     <AddTodo>

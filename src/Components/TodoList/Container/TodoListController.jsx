@@ -1,29 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import AddTodoList from '../components/AddTotoList';
-import store, { addTodo, REMOVE_TODO } from './../../../logics/store';
+import Store, { AddTodo, REMOVE_TODO } from '../../../Logics/Store';
+import { connect } from 'react-redux';
 // import { dispatch } from 'redux';
 
-const TodoListController = () => {
+const TodoListController = ( state, dispatch ) => {
 
-  let state = store.getState();
-  const hi = () => {
-    console.log('changed');
-    state = store.getState();
-    console.log(state);
+  console.log(state);
+
+  const listTodo = () => {
+    return state.store.todoList.map((list, id) => {
+      console.log('gdgd')
+    return (<h4>{list.desc}, {id}</h4>)
+    });
   }
-  store.subscribe(hi);
-
-  useEffect(() => {
-    console.log('rendered controller');
-  })
 
   return (
-    <div id="TodoList">
-      <AddTodoList/>
+    <div id="TodoListWrapper">
+      <AddTodoList addTodo = { dispatch } state = { state } />
       <div id="todoList">
+        {state.store ? listTodo() : 'add todo'}
       </div>
     </div>
   );
 }
 
-export default TodoListController;
+const mapStateToProps = ({  }) 
+
+export default connect(
+  state => ({ store: state }),
+  dispatch => ({ dispatchAddToto: text => dispatch(AddTodo(text)) })
+)(TodoListController);
