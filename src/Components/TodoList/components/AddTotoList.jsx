@@ -1,12 +1,15 @@
-import React, { useState, useEffect, createRef } from 'react';
+import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
+import store, { addTodo } from './../../../logics/store';
 
 const AddTodoList = () => {
 
-  const todoInput = React.createRef();
+  const todoInput = useRef();
+  let state = store.getState();
 
   const addTotoInList = () => {
-    console.log(todoInput.current.value);
+    store.dispatch(addTodo(todoInput.current.value));
+    console.log(state);
   };
 
   return (

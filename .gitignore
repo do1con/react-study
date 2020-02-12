@@ -1,0 +1,7 @@
+*.log
+*.bak
+node_modules/
+dist/
+public/bundle.js
+/.eslintrc.json
+/package-lock.json

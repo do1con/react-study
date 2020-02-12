@@ -1,29 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import AddTodoList from '../components/AddTotoList';
+import store, { addTodo, REMOVE_TODO } from './../../../logics/store';
+// import { dispatch } from 'redux';
 
 const TodoListController = () => {
 
-  //state
-  const [list, setList] = useState();
-  console.log(list);
-
-  //action type & action
-  const type = 'TODO/';
-  const ADD_TODO = `${type}ADD_TODO`;
-
-  //action creators
-  const addTodo = text => {
-    return {
-      type: ADD_TODO,
-      desc: text
-    }
+  let state = store.getState();
+  const hi = () => {
+    console.log('changed');
+    state = store.getState();
+    console.log(state);
   }
+  store.subscribe(hi);
 
   useEffect(() => {
     console.log('rendered controller');
   })
-
-  console.log(ADD_TODO);
 
   return (
     <div id="TodoList">
