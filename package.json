@@ -4,7 +4,7 @@
   "description": "i write code",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server -d --open"
+    "start": "webpack-dev-server -d --content-base src --hot --inline"
   },
   "repository": {
     "type": "git",
@@ -21,7 +21,10 @@
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "react-hot-loader": "^4.5.3",
+    "react-router-dom": "^5.1.2",
+    "styled-components": "^5.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",

@@ -3,7 +3,9 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
-  entry: "./src/index.jsx",
+  entry: [
+    "./src/index",
+  ],
 
   resolve: {
     extensions: [".js", ".jsx"]
@@ -32,6 +34,13 @@ module.exports = {
   devServer: {
     contentBase: path.join(__dirname, "dist"), // 이 경로에 있는 파일이 변경될 때 번들을 다시 컴파일
     compress: true,
-    port: 7547
+    port: 7547,
+    hot: true,
+    inline: true,
+    host: "localhost",
+    watchOptions: {
+        poll: true
+    },
+    historyApiFallback: true
   },
 };
