@@ -1,27 +1,44 @@
 {
-  "name": "3-redux-test-react-1",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "immer": "^2.1.1",
-    "react": "^16.8.4",
-    "react-dom": "^16.8.4",
-    "react-scripts": "2.1.8",
-    "redux": "^4.0.1"
-  },
+  "name": "back-to-basic",
+  "version": "1.0.0",
+  "description": "i write code",
+  "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "start": "webpack-dev-server -d --open"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://do1con@github.com/do1con/react-study.git"
+  },
+  "author": "SeongsooKim",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/do1con/react-study/issues"
+  },
+  "homepage": "https://github.com/do1con/react-study#readme",
+  "dependencies": {
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "@babel/preset-react": "^7.8.3",
+    "babel-loader": "^8.0.6",
+    "eslint": "^6.8.0",
+    "eslint-plugin-react": "^7.18.3",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^3.0.0",
+    "webpack-dev-server": "^2.7.1",
+    "webpack-validator": "^2.3.0"
   },
   "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ]
+    "extends": [
+      "react-app",
+      "airbnb"
+    ]
+  }
 }
