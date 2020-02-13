@@ -21,10 +21,10 @@ export const AddTodo = text => ({
   type: ADD_TODO,
   desc: text
 });
-const removeTodo = text => ({
+export const RemoveTodo = id=> ({
   type: REMOVE_TODO,
-  desc: text
-})
+  id: id
+})  
 const increaseCount = () => ({
   type: INCREASE_COUNT
 });
@@ -46,12 +46,16 @@ const Reducer = (state = initialState, action) => {
         ]
       };
     case REMOVE_TODO:
-      return{
+      console.log(state);
+      
+      let afterDelete = state.todoList.filter(list => {
+        return list.index !== action.id;
+      });
+      console.log(afterDelete);
+      return {
         ...state,
-        todoList: todoList.map((texts) => {
-          return texts !== action.desc ? texts : action.desc
-        })
-      }
+        todoList: afterDelete
+      };
     case INCREASE_COUNT:
       return{
         ...state,
@@ -62,6 +66,8 @@ const Reducer = (state = initialState, action) => {
         ...state,
         count: state.count - 1
       }
+    default:
+      return state;
   }
 }
 

@@ -4,7 +4,7 @@
   "description": "i write code",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server -d --content-base src --hot --inline"
+    "start": "webpack-dev-server -d --content-base src --hot --inline --open"
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,7 @@
     "react-hot-loader": "^4.5.3",
     "react-redux": "^7.1.3",
     "react-router-dom": "^5.1.2",
+    "react-transition-group": "^4.3.0",
     "redux": "^4.0.5",
     "styled-components": "^5.0.1"
   },

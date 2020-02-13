@@ -1,23 +1,19 @@
 import React, { useState, useRef, useEffect } from 'react';
 import styled from 'styled-components';
-import Store, { addTodo } from '../../../Logics/Store';
 
-const AddTodoList = ( addTodo, state ) => {
+const AddTodoList = ( addTodo ) => {
 
   const todoInput = useRef();
 
-  const addTotoInList = () => {
-    addTodo.state.dispatchAddToto(todoInput.current.value)
+  const addTodoInList = () => {
+    addTodo.state.dispatchAddTodo(todoInput.current.value);
+    todoInput.current.value='';
   };
-
-  useEffect(()=> {
-    console.log('last rerender')
-  })
-
+  
   return (
     <AddTodo>
       <TodoText type="text" placeholder="할 일 입력" ref={todoInput}/>
-      <SubmitTodo type="submit" onClick={addTotoInList} value="추가" />
+      <SubmitTodo type="submit" onClick={addTodoInList} value="추가" />
     </AddTodo>
   );
 };
@@ -27,7 +23,7 @@ export default AddTodoList;
 const AddTodo = styled.div`
   padding-top: 50px;
   padding-bottom: 50px;
-  width: 1200px;
+  width: 80%;
   margin: 0 auto;
   display: flex;
 `;
