@@ -11,20 +11,15 @@ const OneTodo = ( props ) => {
   const removeTodo = () => {
     let thisState = unmountState;
     setUnmountState(!thisState);
-    console.log(unmountState);
-    console.log('이건 여기');
-    setTimeout(() => {
-      console.log('느리게');
-      props.removeTodo(props.index)
-    }, 500 )
   }
   
   const animationEnd = () => {
-    if(!show) setUnmountState(false);
+    console.log('여긴안해?');
+    if(!unmountState) props.removeTodo(props.index)
   }
 
   return (
-      <ListOne ref={wrapper} className={unmountState ? 'show' : 'hide'} onanimationend={animationEnd} >
+      <ListOne ref={wrapper} className={unmountState ? 'show' : 'hide'} onAnimationEnd={animationEnd} >
         <Index>{props.index}</Index><DescText>{props.desc}</DescText>
         <DeleteButton type="button" value="X" onClick={removeTodo} />
       </ListOne>
