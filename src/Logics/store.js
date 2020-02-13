@@ -73,6 +73,4 @@ const Reducer = (state = initialState, action) => {
 
 const Store = createStore(Reducer);
 
-//tore.dispatch(increaseCount());
-
 export default Store;

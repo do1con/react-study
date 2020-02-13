@@ -7,9 +7,6 @@ import OneTodo from'./../components/OneTodo';
 
 const TodoListController = ( state, dispatch ) => {
 
-  console.log(state)
-  
-
   const listTodo = () => {
     return state.store.map((list, id) => {
       return <OneTodo desc={list.desc} 
@@ -22,7 +19,7 @@ const TodoListController = ( state, dispatch ) => {
 
   return (
     <div id="TodoListWrapper">
-      <AddTodoList state = { state } />
+      <AddTodoList { ...state } />
       <ShowTodoList>
         {listTodo()}
       </ShowTodoList>
@@ -32,13 +29,12 @@ const TodoListController = ( state, dispatch ) => {
 
 const mapStateToProps = (state) => ({ store: state.todoList });
 const mapDispatchToProps = (dispatch) => ({ 
-  dispatchAddTodo: (text) => dispatch(AddTodo(text)),
-  dispatchRemoveTodo: (index) => dispatch(RemoveTodo(index))
+  dispatchAddTodo: (text) => Store.dispatch(AddTodo(text)),
+  dispatchRemoveTodo: (index) => Store.dispatch(RemoveTodo(index))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoListController);
 
 const ShowTodoList = styled.div`
   width: 100%;
-  background-color: #cccccc;
 `;

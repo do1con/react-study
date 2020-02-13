@@ -6,10 +6,10 @@ const AddTodoList = ( addTodo ) => {
   const todoInput = useRef();
 
   const addTodoInList = () => {
-    addTodo.state.dispatchAddTodo(todoInput.current.value);
+    addTodo.dispatchAddTodo(todoInput.current.value);
     todoInput.current.value='';
   };
-  
+
   return (
     <AddTodo>
       <TodoText type="text" placeholder="할 일 입력" ref={todoInput}/>

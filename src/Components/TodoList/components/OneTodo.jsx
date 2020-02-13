@@ -1,41 +1,75 @@
-import React, { useEffect, useRef } from 'react';
-import styled from 'styled-components';
-import ReactTransitionGroup from 'react-transition-group';
+import React, { useEffect, useRef, useState } from 'react';
+import styled, { keyframes } from 'styled-components';
 
 const OneTodo = ( props ) => {
 
-  const listRef = useRef();
+  const [unmountState, setUnmountState] = useState(true);
+  console.log(unmountState)
 
-  useEffect(() => {
-    listRef.current.style.opacity = 1;
-    listRef.current.style.marginTop = 0;
-  },[]);
+  const wrapper = useRef();
+
+  const removeTodo = () => {
+    let thisState = unmountState;
+    setUnmountState(!thisState);
+    console.log(unmountState);
+    console.log('이건 여기');
+    setTimeout(() => {
+      console.log('느리게');
+      props.removeTodo(props.index)
+    }, 500 )
+  }
+  
+  const animationEnd = () => {
+    if(!show) setUnmountState(false);
+  }
 
   return (
-    <ListOne ref={listRef}
-              transitionName={listAnimation}
-              transitionEnterTimeout={500}
-              transitionLeaveTimeout={500}>
-      <Index>{props.index}</Index><DescText>{props.desc}</DescText><DeleteButton type="button" value="X"
-       onClick={ () => props.removeTodo(props.index) }/>
-    </ListOne>
+      <ListOne ref={wrapper} className={unmountState ? 'show' : 'hide'} onanimationend={animationEnd} >
+        <Index>{props.index}</Index><DescText>{props.desc}</DescText>
+        <DeleteButton type="button" value="X" onClick={removeTodo} />
+      </ListOne>
   );
-
 }
 
 export default OneTodo;
+
+const start = keyframes`
+  from{
+    opacity: 0;
+    margin-top: -50px;
+  } to {
+    opacity: 1;
+    margin-top: 0px;
+  }
+`;
+
+const end = keyframes`
+  from{
+    opacity: 1;
+    margin-top: 0px;
+  } to {
+    opacity: 0;
+    margin-top: -50px;
+  }
+`;
 
 const ListOne = styled.div`
   width: 100%;
   height: 50px;
   line-height: 50px;
-  margin-top: -50px;
   text-align: center;
-  background-color: #dddddd;
   display: flex;
   border-bottom: 1px solid #111111;
-  opacity: 0;
-  transition: opacity, margin-top, 0.5s;
+  &.show{
+    animation-name: ${start};
+    animation-duration: 0.5s;
+    animation-direction: normal;
+  }
+  &.hide{
+    animation-name: ${end};
+    animation-duration: 0.5s;
+    animation-direction: normal;
+  }
 `;
 
 const Index = styled.h4`
