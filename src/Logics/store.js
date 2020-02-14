@@ -25,10 +25,10 @@ export const RemoveTodo = id=> ({
   type: REMOVE_TODO,
   id: id
 })  
-const increaseCount = () => ({
+export const IncreaseCount = () => ({
   type: INCREASE_COUNT
 });
-const decreaseCount = () => ({
+export const DecreaseCount = () => ({
   type: DECREASE_COUNT
 })
 

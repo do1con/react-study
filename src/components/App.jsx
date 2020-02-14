@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Link, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import TodoListController from './TodoList/Container/TodoListController';
+import CounterController from './Counter/Container/CounterController';
 
 const App = () => {
   return (
@@ -13,6 +14,7 @@ const App = () => {
       </Header>
       <Section>
         <Route path="/todoList" component={ TodoListController } />
+        <Route path="/counter" component={ CounterController } />
       </Section>
     </BrowserRouter>
   );
