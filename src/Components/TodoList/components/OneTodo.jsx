@@ -1,28 +1,15 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 
 const OneTodo = ( props ) => {
 
   const [unmountState, setUnmountState] = useState(true);
-  console.log(unmountState)
-
-  const wrapper = useRef();
-
-  const removeTodo = () => {
-    let thisState = unmountState;
-    setUnmountState(!thisState);
-  }
-  
-  const animationEnd = () => {
-    console.log('여긴안해?');
-    if(!unmountState) props.removeTodo(props.index)
-  }
 
   return (
-      <ListOne ref={wrapper} className={unmountState ? 'show' : 'hide'} onAnimationEnd={animationEnd} >
-        <Index>{props.index}</Index><DescText>{props.desc}</DescText>
-        <DeleteButton type="button" value="X" onClick={removeTodo} />
-      </ListOne>
+    <ListOne className={unmountState ? 'show' : ''} >
+      <Index>{props.index}</Index><DescText>{props.desc}</DescText>
+      <DeleteButton type="button" value="X" onClick={() => {props.removeTodo(props.index)}} />
+    </ListOne>
   );
 }
 

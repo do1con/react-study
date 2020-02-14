@@ -46,12 +46,9 @@ const Reducer = (state = initialState, action) => {
         ]
       };
     case REMOVE_TODO:
-      console.log(state);
-      
       let afterDelete = state.todoList.filter(list => {
         return list.index !== action.id;
       });
-      console.log(afterDelete);
       return {
         ...state,
         todoList: afterDelete
