@@ -7,20 +7,10 @@ import { connect } from 'react-redux';
 
 // 리팩터링 후
 class FriendMain extends React.PureComponent {
-  state = {
-    friends: store.getState().friend.friends,
-  };
-  componentDidMount() {
-    this.unsubscribe = store.subscribe(() =>
-      this.setState({ friends: store.getState().friend.friends }),
-    );
-  }
-  componentWillUnmount() {
-    this.unsubscribe();
-  }
+
   onAdd = () => {
     const friend = getNextFriend();
-    store.dispatch(addFriend(friend));
+    this.props.addFriend(friend);
   };
   render() {
     console.log('FriendMain render');
