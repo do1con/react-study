@@ -8,7 +8,7 @@ class NumberSelect extends React.Component {
   }
 
   render(){
-    const { value, option, postfix } = this.props;
+    const { value, options, postfix } = this.props;
     return(
       <div>
         <select onChange={this.onChange} value={value}>

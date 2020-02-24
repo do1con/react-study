@@ -20,6 +20,6 @@ const reducer = createReducer(INITIAL_STATE, {
   [SET_SHOW_LIMIT]: (state, action) => ( state.showLimit = action.showLimit )
 });
 
-const reducers = [reducer, friendsReducer];
+const reducers = [reducer, friendReducer];
 
 export default mergeReducers(reducers);
