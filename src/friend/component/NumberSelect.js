@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 
 class NumberSelect extends React.Component {
   
@@ -8,18 +7,18 @@ class NumberSelect extends React.Component {
     this.props.onChange(value);
   }
 
+  render(){
+    const { value, option, postfix } = this.props;
+    return(
+      <div>
+        <select onChange={this.onChange} value={value}>
+          {options.map(option => (
+            <option value={value} key={option}>{option}</option>
+          ))}
+        </select>
+      </div>
+    );
+  }
 }
 
-mapStateToProps = state => {
-
-}
-
-mapDispatchToProps = dispatch => {
-
-}
-
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(NumberSelect)
+export default NumberSelect;
