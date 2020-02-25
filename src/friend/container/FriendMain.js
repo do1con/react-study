@@ -15,7 +15,6 @@ class FriendMain extends React.PureComponent {
     this.props.addFriend(friend);
   };
   render() {
-    console.log(friendsWithAgeLimit)
     const {
       friendsWithAgeLimit,
       friendsWithAgeShowLimit,
@@ -55,7 +54,6 @@ const mapStateToProps = state => {
   const ageLimit = state.friend.ageLimit;
   const showLimit = state.friend.showLimit;
   const friendsWithAgeLimit = friends.filter(friend => {
-    console.log(ageLimit)
     return (friend.age <= ageLimit)});
   const friendsWithAgeShowLimit = friendsWithAgeLimit.slice(0, showLimit);
   
