@@ -1,7 +1,6 @@
 import React from 'react';
-import store from '../../common/store';
 import { getNextFriend } from '../../common/mockData';
-import * as actions from '../state';
+import * as actions from '../state/state';
 import FriendList from '../component/FriendList';
 import { connect } from 'react-redux';
 import NumberSelect from '../component/NumberSelect';
@@ -23,7 +22,6 @@ class FriendMain extends React.PureComponent {
       setAgeLimit,
       setShowLimit
     } = this.props;
-    const friends = store.getState().friend.friends;
     return (
       <div>
         <button onClick={this.onAdd}>친구 추가</button>
@@ -53,8 +51,7 @@ const mapStateToProps = state => {
   const friends = state.friend.friends;
   const ageLimit = state.friend.ageLimit;
   const showLimit = state.friend.showLimit;
-  const friendsWithAgeLimit = friends.filter(friend => {
-    return (friend.age <= ageLimit)});
+  const friendsWithAgeLimit = friends.filter(friend => friend.age <= ageLimit);
   const friendsWithAgeShowLimit = friendsWithAgeLimit.slice(0, showLimit);
   
   return{
