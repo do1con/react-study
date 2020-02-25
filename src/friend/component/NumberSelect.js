@@ -1,7 +1,7 @@
 import React from 'react';
 
 class NumberSelect extends React.Component {
-  
+
   onChange = (e) => {
     const value = Number(e.currentTarget.value);
     this.props.onChange(value);
@@ -9,13 +9,15 @@ class NumberSelect extends React.Component {
 
   render(){
     const { value, options, postfix } = this.props;
+    console.log(value)
     return(
       <div>
         <select onChange={this.onChange} value={value}>
           {options.map(option => (
-            <option value={value} key={option}>{option}</option>
+            <option value={option} key={option}>{option}</option>
           ))}
         </select>
+        {postfix}
       </div>
     );
   }
